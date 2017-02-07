@@ -1,12 +1,8 @@
 html {
-    background: #e6e9e9;
-    /**background-image: url("https://s-media-cache-ak0.pinimg.com/originals/16/fc/11/16fc1125f9062376279022ddc340913c.jpg");**/
-    -webkit-font-smoothing: antialiased;
+    background: #fff;
     background-image: url("turvetausta.png");
     border: 0px solid white;
     background-attachment: fixed;
-   
-
 }
 
 body {
@@ -66,8 +62,12 @@ header {
   text-align: center;
   font-size: 60px;
   margin-bottom: 90px;
-    
+}
 
+.kansikuva {
+    border: none;
+   width: 40px;
+    margin-bottom: 70px;
 }
 
 .kampanja {
@@ -167,17 +167,6 @@ footer {
    width: 450px;
     float: left;
     margin-right: 20px;
-}
-
-
-img {
-    animation: colorize 2s cubic-bezier(0, 0, .78, .36) 1;
-    background: transparent;
-    border: 10px solid rgba(0, 0, 0, 0.12);
-    border-radius: 4px;
-    display: block;
-    margin: 1.3em auto;
-    max-width: 95%;
 }
 
 
