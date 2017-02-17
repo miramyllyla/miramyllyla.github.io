@@ -47,7 +47,7 @@ body {
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover, .offcanvas a:focus{
-    color: peachpuff;
+    color: #f3ccff;
 }
 
 /* Position and style the close button (top right corner) */
@@ -82,7 +82,7 @@ body {
 h5 {
     color: black;
     font-family: "Futura", Futura, Arial, sans-serif;
-    font-style:oblique
+    font-style:normal;
 }
 
 
