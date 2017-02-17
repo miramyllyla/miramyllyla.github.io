@@ -218,7 +218,6 @@ footer {
     transition: 0.5s;
 }
 
-
 .kamppiskuva {
    border: none;
    width: 450px;
@@ -226,13 +225,6 @@ footer {
     margin-right: 20px;
     margin-bottom: 20px;
 }
-
-@media only screen and (max-width: 500px) {
-    /* For mobile phones: */
-    [class*="kampiskuva"] {
-        width: 100%;
-    }
-
 
 .infokuva {
    border: none;
@@ -242,12 +234,6 @@ footer {
     margin-bottom: 20px;
 }
 
-@media only screen and (max-width: 500px) {
-    /* For mobile phones: */
-    [class*="infokuva"] {
-        width: 100%;
-    }
-
 .vaikutuskuva {
    border: none;
    width: 450px;
@@ -256,19 +242,13 @@ footer {
     margin-bottom: 20px;
 }
     
-@media only screen and (max-width: 500px) {
-    /* For mobile phones: */
-    [class*="vaikutuskuva"] {
-        width: 100%;
-    }
-    
 .uutiskuva {
     border: none;
-    width: 700px;
+    width: 600px;
     float: none;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 700px) {
     /* For mobile phones: */
     [class*="uutiskuva"] {
         width: 100%;
