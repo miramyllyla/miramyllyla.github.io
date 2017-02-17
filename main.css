@@ -227,6 +227,12 @@ footer {
     margin-bottom: 20px;
 }
 
+@media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    [class*="kampiskuva"] {
+        width: 100%;
+    }
+
 
 .infokuva {
    border: none;
@@ -238,7 +244,7 @@ footer {
 
 @media only screen and (max-width: 500px) {
     /* For mobile phones: */
-    [class*="kuva"] {
+    [class*="infokuva"] {
         width: 100%;
     }
 
@@ -249,6 +255,12 @@ footer {
     margin-right: 20px;
     margin-bottom: 20px;
 }
+    
+@media only screen and (max-width: 500px) {
+    /* For mobile phones: */
+    [class*="vaikutuskuva"] {
+        width: 100%;
+    }
     
 .uutiskuva {
     border: none;
