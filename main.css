@@ -100,7 +100,7 @@ nav {
 }
 
 nav a {
-    color:  white;
+    color:  black;
     text-decoration: none
 }
 
@@ -110,9 +110,10 @@ nav li {
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color: peachpuff;
+  /*background-color: peachpuff;*/
 }
 
+    
 header {
   text-align: center;
   font-size: 60px;
@@ -124,7 +125,7 @@ header {
 
 @media screen and (max-width: 600px) {
     header {
-      font-size: 60px;  
+      font-size: 56px;  
     }  
 }
 
