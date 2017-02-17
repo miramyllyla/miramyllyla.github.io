@@ -18,6 +18,60 @@ body {
     padding: 2em 2em 4em;
 }
 
+/* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0;
+    left: 0;
+    background-color: #111; /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    opacity: 0.97;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 50px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    text-align: center;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover, .offcanvas a:focus{
+    color: peachpuff;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: #818181;
+}
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+
 h5 {
     color: black;
     font-family: "Futura", Futura, Arial, sans-serif;
@@ -28,7 +82,7 @@ h5 {
 h5 {
     margin: auto;
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 1px;
 }
 
 nav {
@@ -38,27 +92,33 @@ nav {
     font-weight: 600;
     line-height: 1.3;
     text-align: center;
-    margin-bottom: 60px;
-    font-family: "Futura", Futura, Arial, sans-serif
+    margin-bottom: 20px;
+    font-family: "Futura", Futura, Arial, sans-serif;
+    padding: 3px 0;
+    display: block;
 }
 
 nav a {
-    color:  black;
+    color:  white;
     text-decoration: none
 }
 
 nav li {
   margin: 0;
-  padding: 0 10px;
+  padding: 0 60px;
   display: inline-flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: peachpuff;
 }
 
 header {
   text-align: center;
   font-size: 60px;
-  margin-bottom: 90px;
+  margin-bottom: 60px;
+  font-family: 'Rubik Mono One', sans-serif;
+  font-size: 80px ;
+  color: #f3ccff;
 }
 
 .kansikuva {
@@ -80,6 +140,12 @@ h2 {
 
 .vaikuta {
   margin-top: 90px;
+}
+
+
+.uutisosio {
+    margin-top: 90px;
+    text-align: center;
 }
 
 p {
@@ -105,6 +171,7 @@ p {
 .contact a:active {
     top: 2px;
 }
+
 
 footer {
     color:black ;
@@ -144,6 +211,7 @@ footer {
     transition: 0.5s;
 }
 
+
 .kamppiskuva {
    border: none;
    width: 450px;
@@ -163,6 +231,12 @@ footer {
    width: 450px;
     float: left;
     margin-right: 20px;
+}
+
+.uutiskuva {
+    border: none;
+    width: 700px;
+    float: none;
 }
 
 

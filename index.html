@@ -1,40 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Cormorant+Garamond|Libre+Baskerville|Lora|Merriweather|Montserrat|Patua+One|Playfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface%7CCormorant+Garamond%7CLibre+Baskerville%7CLora%7CPlayfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Faster+One%7CRubik+Mono+One" rel="stylesheet">
     <meta charset="UTF-8" />
     <meta name="author" content="Mira Myllylä" />
     <meta name="description" content="Tunne turpeen taika" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" media="screen"/>
     <link rel="shortcut icon"
           href="logo.png"/>
-    </head>
     <title> Turve &#10084;</title>
-    <h5>Suomalaisen energian puolesta 2017</h5>
+    </head>
+    <h5>Suomalaisen bioenergian puolesta 2017</h5>
     
-    <nav>
+    
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">Media</a>
+  <a href="#">Kampanja</a>
+  <a href="#">Ota yhteyttä</a>
+  <a href="#">Yhteistyökumppanit</a>
+</div>
+
+<span style="font-size:50px;cursor:pointer" onclick="openNav()">&#9756;</span>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+    
+<link rel="stylesheet" type="text/css" href="main.css"/>
+    
+<body>
+    <header>Tunne turpeen taika.
+        </header>
+        <nav>
       <ul>
-        <li><a href="#kamppis">Kampanja</a></li>
-        <li><a href="#info">Tietoa turpeesta</a></li>
-        <li><a href="#osallistu">Osallistu &amp; vaikuta</a></li>
+        <li><a href="#kamppis">Miksi?</a></li>
+        <li><a href="#info">Mitä?</a></li>
+        <li><a href="#osallistu">Miten?</a></li>
       </ul>
     </nav>
     
-    <link rel="stylesheet" type="text/css" href="main.css"/>
-    
-<body>
-    
-    <div class="kansikuva">
-    <img src=""/>
-    </div>
-            
-    <header>Tunne turpeen taika.</header>
-    
-  
     <p>Lorem Ipsum on yksinkertaisesti testausteksti, jota tulostus- ja ladontateollisuudet käyttävät. Lorem Ipsum on ollut teollisuuden normaali testausteksti jo 1500-luvulta asti, jolloin tuntematon tulostaja otti kaljuunan ja sekoitti sen tehdäkseen esimerkkikirjan. Se ei ole selvinnyt vain viittä vuosisataa, mutta myös loikan elektroniseen kirjoitukseen, jääden suurinpiirtein muuntamattomana. Se tuli kuuluisuuteen 1960-luvulla kun Letraset-paperiarkit, joissa oli Lorem Ipsum pätkiä, julkaistiin ja vielä myöhemmin tietokoneen julkistusohjelmissa, kuten Aldus PageMaker joissa oli versioita Lorem Ipsumista.
     </p>
     
     <div class="kampanja" id="kamppis">
-        <h2>Kampanja</h2>
+        <h2>Suomalaisen bioenergian puolesta 2017</h2>
         <article>
             <img class="kamppiskuva" src="kampanja.png"/>
         <p>Lorem Ipsum on yksinkertaisesti testausteksti, jota tulostus- ja ladontateollisuudet käyttävät. Lorem Ipsum on ollut teollisuuden normaali testausteksti jo 1500-luvulta asti, jolloin tuntematon tulostaja otti kaljuunan ja sekoitti sen tehdäkseen esimerkkikirjan. Se ei ole selvinnyt vain viittä vuosisataa, mutta myös loikan elektroniseen kirjoitukseen, jääden suurinpiirtein muuntamattomana. Se tuli kuuluisuuteen 1960-luvulla kun Letraset-paperiarkit, joissa oli Lorem Ipsum pätkiä, julkaistiin ja vielä myöhemmin tietokoneen julkistusohjelmissa, kuten Aldus PageMaker joissa oli versioita Lorem Ipsumista.
@@ -57,18 +77,28 @@
         </p></article>
     </div>
     
-    <div class="contact"><a>Täytä lomake</a>
+    <div class="uutisosio" id="uutiset">
+         <h2>Uutiset</h2>
+        <article>
+            <img class="uutiskuva" src="uutisikkuna.png"/>
+        <p>Jos haluat jakaa mielipiteesi turpeesta ja sen tuotannosta, laita viestiä täyttämällä lomake.
+        </p></article>
+    </div>
+    
+    <div class="contact"><a>Täytä lomake</a> 
      </div>
     
      <div class="alapalkki">
-          <h2>Lisätietoa</h2>
+          <h1>&#9759;</h1>
     
     <footer class="footer">
         <div class="footer-content">
          <ul>  
-             <li><a> &copy;Mira Myllylä</a></li>
-             <li><a> Turveliitto Ry</a></li>
-             <li><a> Suomalaisen bioenergian puolesta 2017</a></li>
+             <li><a>&copy;Mira Myllylä</a></li>
+             <li><a>Turvekampanja 2017</a></li>
+             <li><a href="http://facebook.com"><i style="font-size:24px" class="fa">&#xf09a;</i></a></li>
+             <li><a href="http://instagram.com"><i style="font-size:24px" class="fa">&#xf16d;</i></a></li>
+             <li><a href="http://twitter.com"><i style="font-size:24px" class="fa">&#xf099;</i></a></li>
          </ul> 
         </div>
     </footer>
