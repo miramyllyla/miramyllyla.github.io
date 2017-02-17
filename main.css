@@ -18,6 +18,8 @@ body {
     padding: 2em 2em 4em;
 }
 
+
+
 .sidenav {
     height: 100%; 
     width: 0;
@@ -67,7 +69,7 @@ body {
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav a {font-size: 16px;}
 }
 
 
@@ -119,6 +121,13 @@ header {
   font-size: 80px ;
   color: #f3ccff;
 }
+
+@media screen and (max-width: 450px) {
+    /* For mobile phones: */
+    header {
+        font-size: 60px;
+    }
+
 
 .kansikuva {
     border: none;
@@ -216,27 +225,55 @@ footer {
    width: 450px;
     float: left;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
+
+@media screen and (max-width: 500px) {
+    /* For mobile phones: */
+    [class*="kamppiskuva"] {
+        width: 100%;
+    }
+
 
 .infokuva {
    border: none;
    width: 450px;
     float: right;
     margin-left: 20px;
+    margin-bottom: 20px;
 }
+
+@media screen and (max-width: 500px) {
+    /* For mobile phones: */
+    [class*="infokuva"] {
+        width: 100%;
+    }
 
 .vaikutuskuva {
    border: none;
    width: 450px;
     float: left;
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 
+@media screen and (max-width: 500px) {
+    /* For mobile phones: */
+    [class*="vaikutuskuva"] {
+        width: 100%;
+    }
+    
 .uutiskuva {
     border: none;
     width: 700px;
     float: none;
 }
+
+@media screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="uutiskuva"] {
+        width: 100%;
+    }
 
 
 }
