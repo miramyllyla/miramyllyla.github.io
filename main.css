@@ -239,6 +239,12 @@ footer {
     margin-bottom: 20px;
 }
 
+@media only screen and (max-width: 700px) {
+    /* For mobile phones: */
+    [class*="kamppiskuva"] {
+        width: 100%;
+    }
+
 .infokuva {
    border: none;
    width: 450px;
@@ -247,6 +253,12 @@ footer {
     margin-bottom: 20px;
 }
 
+@media only screen and (max-width: 700px) {
+    /* For mobile phones: */
+    [class*="infokuva"] {
+        width: 100%;
+    }
+
 .vaikutuskuva {
    border: none;
    width: 450px;
@@ -254,18 +266,13 @@ footer {
     margin-right: 20px;
     margin-bottom: 20px;
 }
-    
-.uutiskuva {
-    border: none;
-    width: 700px;
-    float: none;
-}
 
 @media only screen and (max-width: 700px) {
     /* For mobile phones: */
-    [class*="uutiskuva"] {
+    [class*="vaikutuskuva"] {
         width: 100%;
     }
+
 
 
 }
