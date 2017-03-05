@@ -18,6 +18,7 @@ $.getJSON("https://myllylm2.firebaseio.com/.json", function(data){
 });
 
 function next() {
+  if (typeof(localStorage.setItem("lastname", current)) != undefined) {
   localStorage.setItem("lastname", current);
   switch(current) {
       case 0:
@@ -29,15 +30,20 @@ function next() {
       case 2:
           current = 0;
           break;
+ /*   case isNaN(current);
+            current = 0;
+            break; */
+  }
   }
     
-    $(".uutiskuvat").fadeIn(1000);
-    $(".panel").html("<img class ='uutiskuvat' src='" + aData.articles[current].picture + "'>");
-    $(".uutiskuvat").fadeOut(1000); 
+    $('.uutiskuvat').fadeIn(1000);
+    $('.panel').html("<img class ='uutiskuvat' src='" + aData.articles[current].picture + "'>");
+    $('.uutiskuvat').fadeOut(1000); 
   
 }
     
 function previous() {
+    if (typeof(localStorage.setItem("lastname", current)) != undefined) {
     localStorage.setItem("lastname", current);
     switch(current) {
         case 0:
@@ -48,11 +54,15 @@ function previous() {
             break;
         case 2:
             current = 1;
-            break;   
+            break;
+      /*  case isNaN(current);
+            current = 0;
+            break; */
     }
-    $(".uutiskuvat").fadeIn(1000);
-    $(".panel").html("<img class ='uutiskuvat' src='" + aData.articles[current].picture + "'>");
-    $(".uutiskuvat").fadeOut(1000);
+    }
+    $('.uutiskuvat').fadeIn(1000);
+    $('.panel').html("<img class ='uutiskuvat' src='" + aData.articles[current].picture + "'>");
+    $('.uutiskuvat').fadeOut(1000);
 }
 
 
