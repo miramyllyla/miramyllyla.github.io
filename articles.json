@@ -2,7 +2,7 @@
 "articles": [
     {
     "title" : "uutiset",
-    "picture" : "uutiskuva.png",
+    "picture" : "uutisikkuna.png",
     "input" : "UUTISET: Cras non ipsum neque. In elementum sem sed ornare viverra. Praesent sodales enim id enim eleifend, et auctor sem imperdiet. Quisque ac facilisis justo. Morbi condimentum laoreet risus convallis pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae porttitor turpis, nec elementum nibh. Aliquam et porttitor est."
     },{
     "title" : "infoa",
@@ -10,7 +10,7 @@
     "input" : "INFOA:Cras non ipsum neque. In elementum sem sed ornare viverra. Praesent sodales enim id enim eleifend, et auctor sem imperdiet. Quisque ac facilisis justo. Morbi condimentum laoreet risus convallis pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae porttitor turpis, nec elementum nibh. Aliquam et porttitor est."
     },{
     "title" : "kamppis",
-    "picture" : "kamppiskuva.png",
+    "picture" : "osallistukuva.png",
     "input" : "KAMPPIS:Cras non ipsum neque. In elementum sem sed ornare viverra. Praesent sodales enim id enim eleifend, et auctor sem imperdiet. Quisque ac facilisis justo. Morbi condimentum laoreet risus convallis pharetra. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae porttitor turpis, nec elementum nibh. Aliquam et porttitor est."
     }
     ]
