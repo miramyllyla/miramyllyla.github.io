@@ -12,7 +12,7 @@ window.onload = function() {
 var aData = null;
 var play = true;
 
-$.getJSON("https://myllylm2.firebaseio.com/.json", function(data){
+$.getJSON("https://myllylm2.firebaseio.com/.json", function(data){ //$is not defined??? at window.onload??
     console.log(data);
     aData = data;
 });
@@ -43,7 +43,7 @@ function next() {
 }
     
 function previous() {
-    if (typeof(localStorage.setItem("lastname", current)) != undefined) {
+   // if (typeof(localStorage.setItem("lastname", current)) != undefined) {
     localStorage.setItem("lastname", current);
     switch(current) {
         case 0:
@@ -58,7 +58,7 @@ function previous() {
       /*  case isNaN(current);
             current = 0;
             break; */
-    }
+  //  }
     }
     $('.uutiskuvat').fadeIn(1000);
     $('.panel').html("<img class ='uutiskuvat' src='" + aData.articles[current].picture + "'>");
