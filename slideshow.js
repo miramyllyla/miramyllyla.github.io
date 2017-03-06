@@ -18,7 +18,6 @@ $.getJSON("https://myllylm2.firebaseio.com/.json", function(data){ //$is not def
 });
 
 function next() {
-  if (typeof(localStorage.setItem("lastname", current)) != undefined) {
   localStorage.setItem("lastname", current);
   switch(current) {
       case 0:
@@ -30,12 +29,7 @@ function next() {
       case 2:
           current = 0;
           break;
- /*   case isNaN(current);
-            current = 0;
-            break; */
-  }
-  }
-    
+  }  
     $('.uutiskuvat').fadeIn(1000);
     $('.panel').html("<img class ='uutiskuvat' src='" + aData.articles[current].picture + "'>");
     $('.uutiskuvat').fadeOut(1000); 
@@ -43,7 +37,6 @@ function next() {
 }
     
 function previous() {
-   // if (typeof(localStorage.setItem("lastname", current)) != undefined) {
     localStorage.setItem("lastname", current);
     switch(current) {
         case 0:
@@ -55,10 +48,6 @@ function previous() {
         case 2:
             current = 1;
             break;
-      /*  case isNaN(current);
-            current = 0;
-            break; */
-  //  }
     }
     $('.uutiskuvat').fadeIn(1000);
     $('.panel').html("<img class ='uutiskuvat' src='" + aData.articles[current].picture + "'>");
@@ -86,6 +75,9 @@ function toggle() {
 var loop = setInterval( function() {  
     console.log("luuppi");
             next();
+      $('.uutiskuvat').fadeIn(1000);
+    $('.panel').html("<img class ='uutiskuvat' src='" + aData.articles[current].picture + "'>");
+    $('.uutiskuvat').fadeOut(1000); 
         }, 1500);
 
 $("#previous").click(function() {
