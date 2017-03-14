@@ -162,6 +162,18 @@ h2 {
     text-align: center;
 }
 
+.videocontainer {
+    justify-content: center;
+    text-align: center;
+}
+
+.videoitse {
+    width: 500px;
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+}
+
 p {
   font-family: 'Lora', serif;
 }
