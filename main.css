@@ -168,7 +168,7 @@ h2 {
 }
 
 .videoitse {
-    width: 500px;
+    width: 700px;
     height: auto;
     display: flex;
     margin: 0 auto;
@@ -368,6 +368,12 @@ footer {
 @media only screen and (max-width: 700px) {
     /* For mobile phones: */
     [class*="uutiskuvat"] {
+        width: 100%;
+    }
+    
+@media only screen and (max-width: 700px) {
+    /* For mobile phones: */
+    [class*="videoitse"] {
         width: 100%;
     }
 
