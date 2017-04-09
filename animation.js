@@ -203,15 +203,17 @@ $(document).ready( function() {
        
     
     function main() {
-        
-    if (livesLeft == 0) {
-        alert("GAME OVER");
-        document.location.reload();
-    }
         update();              
         render();
         requestAnimationFrame(main);
+        if (livesLeft == 0) {
+        alert("GAME OVER");
+        document.location.reload();
+        reset();
+    }
     };
+    
+
     
     main();
     
