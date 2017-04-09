@@ -113,6 +113,16 @@ $(document).ready( function() {
     };
     window.addEventListener("keydown", arrow_keys_handler, false);
 
+    
+    addEventListener('mousedown', function(e) {
+        var x = e.offsetX 
+        var y = e.offsetY
+        for(i = 0; i<enemies.length;i++) {
+            if (enemies[i].x <= x && x<= (enemies[i].x + 50)&& enemies[i].y <= y && y <= (enemies[i].y + 41)) {
+                enemies.splice(i, 1)
+            }
+        }
+    })
 
     
         
