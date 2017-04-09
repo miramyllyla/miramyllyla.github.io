@@ -27,7 +27,7 @@ $(document).ready( function() {
     
     picci.src = "/cat_ani_0/cat_fighter_sprite1.png";
     
-    var enemysCaught = 0;
+    var livesLeft = 10;
     var treatsCaught = 0;
     
     var picEnemy = new Image();
@@ -67,7 +67,8 @@ $(document).ready( function() {
         var x = enemy.x - (enemy.w / 2);
         var y = enemy.y - (enemy.h / 2);
            context.drawImage(picEnemy, 0, 0, 45, 45, x, y, 45, 45); 
-    }
+        }
+    
     
     
     function drawTreat(context, treat) {
@@ -102,14 +103,8 @@ $(document).ready( function() {
     window.addEventListener('keyup', function(e) {
         delete keysDown[e.keyCode];
     });
-    
-  /*  document.addEventListener("mousemove", mouseMoveHandler, false)
-    function mouseMoveHandler(e) {
-        var relativeX = e.clientX - canvas.offsetLeft;
-        if (relativeX > 0 && relativeX < canvas.width) {
-            paddleX = relativeX - paddleWidth/2;
-        }
-    }*/
+
+
     
         
  var collisionTest = function () {
@@ -118,7 +113,7 @@ $(document).ready( function() {
            && (enemies[i].x <= (player.x + 32))
            && (player.y <= (enemies[i].y + 32))
            && (enemies[i].y <= (player.y + 32))) {
-            ++enemysCaught; 
+            --livesLeft; 
             resetInMiddle(enemies[i]);
         }
         }
@@ -157,7 +152,7 @@ $(document).ready( function() {
         ctx.font = "24px Futura";
         ctx.textAlign = "middle";
         ctx.textBaseline = "top";
-        ctx.fillText("Lives used: " + enemysCaught, 32, 32);
+        ctx.fillText("Lives left: " + livesLeft, 32, 32);
         ctx.fillText("Points: " + treatsCaught, 60, 60);
     };
     
@@ -182,9 +177,6 @@ $(document).ready( function() {
        moveTreat();
        collisionTest();
        collisionTreatTest();
-  /*     if (enemysCaught >= 10) {
-            ctx.fillText("Sorry, you died!" + enemysCaught, 100, 100);
-       }*/
    };
         
  
@@ -194,7 +186,7 @@ $(document).ready( function() {
     function main() {
         update();              
         render();
-        if (enemysCaught >= 10) {
+        if (livesLeft == 0) {
         alert("GAME OVER");
         document.location.reload();
     }

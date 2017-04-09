@@ -1,4 +1,5 @@
 var enemies = [];
+var isDead = false;
 
 function addEnemy() {
     
@@ -13,6 +14,10 @@ var enemy = {
     
     return enemy;
 };
+
+function deleteEnemy(a) {
+    enemies.splice(a);
+}
     
 
 for (i=0; i < 5; i++ ) {
