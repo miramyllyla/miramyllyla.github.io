@@ -119,6 +119,12 @@ nav li {
   /*background-color: peachpuff;*/
 }
 
+#canvas {
+    width: 500px;
+    height: auto;
+    display: flex;
+    margin: 0 auto;
+}
     
 header {
   text-align: center;
