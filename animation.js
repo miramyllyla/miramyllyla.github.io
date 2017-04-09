@@ -3,6 +3,12 @@ $(document).ready( function() {
     var ctx = canvas.getContext('2d');
     canvas.width = 400;
     canvas.height = 400;
+    var paddleHeight = 10;
+    var paddleWidth = 75;
+    var paddleX = (canvas.width-paddleWidth)/2;
+    
+    
+    
     
     // Backround image
     var bgReady = false;
@@ -22,7 +28,6 @@ $(document).ready( function() {
     picci.src = "/cat_ani_0/cat_fighter_sprite1.png";
     
     var enemysCaught = 0;
-    
     var treatsCaught = 0;
     
     var picEnemy = new Image();
@@ -97,6 +102,14 @@ $(document).ready( function() {
     window.addEventListener('keyup', function(e) {
         delete keysDown[e.keyCode];
     });
+    
+  /*  document.addEventListener("mousemove", mouseMoveHandler, false)
+    function mouseMoveHandler(e) {
+        var relativeX = e.clientX - canvas.offsetLeft;
+        if (relativeX > 0 && relativeX < canvas.width) {
+            paddleX = relativeX - paddleWidth/2;
+        }
+    }*/
     
         
  var collisionTest = function () {
@@ -181,11 +194,11 @@ $(document).ready( function() {
     function main() {
         update();              
         render();
-        requestAnimationFrame(main);
         if (enemysCaught >= 10) {
         alert("GAME OVER");
         document.location.reload();
-        }
+    }
+        requestAnimationFrame(main);
     };
     
     main();
