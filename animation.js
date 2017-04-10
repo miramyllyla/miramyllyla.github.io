@@ -207,9 +207,9 @@ $(document).ready( function() {
         render();
         requestAnimationFrame(main);
         if (livesLeft == 0) {
-        alert("GAME OVER");
         document.location.reload();
-        reset();
+        alert("GAME OVER");
+        
     }
     };
     
