@@ -123,6 +123,18 @@ $(document).ready( function() {
             }
         }
     })
+    
+    
+
+
+    $("#speedDown").click(function() {
+        if(player.speed > 5)
+        player.speed-=5
+    })
+    
+    $("#speedUp").click(function() {
+            player.speed+=5    
+    })
 
     
         

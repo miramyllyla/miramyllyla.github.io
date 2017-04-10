@@ -256,6 +256,11 @@ p {
     color:  black;
 }
 
+#speedit {
+    text-align: center;
+    display: block;
+}
+
 
 #play {
  display: none;
