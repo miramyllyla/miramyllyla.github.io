@@ -52,9 +52,9 @@ $(document).ready( function() {
         var y = player.y - (player.h / 2);
         
         if (player.direction === 0) {  // UP
-           context.drawImage(picci, 0, 0, 50, 50, x, y, 50, 50);
+           context.drawImage(picci, 150, 100, 50, 50, x, y, 50, 50);
         } else if (player.direction === 1) { //RIGHT
-           context.drawImage(picci, 50, 100, 50, 50, x, y, 50, 50); 
+           context.drawImage(picci, 200, 200, 50, 50, x, y, 50, 50); 
         } else if (player.direction === 2) { //DOWN
             context.drawImage(picci, 150, 0, 50, 50, x, y, 50, 50);
         } else if (player.direction === 3) {  //LEFT
