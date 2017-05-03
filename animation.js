@@ -221,7 +221,7 @@ $(document).ready( function() {
         if (livesLeft == 0) {
         document.location.reload();
         alert("GAME OVER");
-        
+        alert("GAME OVER");
     }
     };
     
