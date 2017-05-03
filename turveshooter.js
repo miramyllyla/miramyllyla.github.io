@@ -9,7 +9,7 @@ function preload() {
     game.load.image('live', 'heart.png');
     game.load.image('kaboom', 'fireball1.png');
     game.load.image('starfield', 'field.png');
-    game.load.image('background', 'dimangi.png');
+    game.load.image('bonus', 'starfield.png');
     game.load.audio('soundi', 'soundi.mp3');
 
 }
@@ -39,13 +39,15 @@ var enemySpeed = 120
 
 function create() {
 
+   
     game.physics.startSystem(Phaser.Physics.ARCADE);
     game.sound.play('soundi');
-    game.sound.loopFull;
+    game.sound.loop = true;
 
     //  The scrolling starfield background
     starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
-    //ship = game.add.tileSprite(0,0,300,600,'ship');
+    
+ 
     //  Our bullet group
     bullets = game.add.group();
     bullets.enableBody = true;
@@ -257,6 +259,7 @@ function enemyHitsPlayer (player,bullet) {
         player.kill();
         enemyBullets.callAll('kill');
         enemySpeed = 120;
+        score = 0;
         bulletAdd = 200;
         currentLevel = 0;
         stateText.text="  \n Click to restart";
@@ -327,6 +330,13 @@ function restart () {
 
     //  A new level starts
     currentLevel += 1
+    if (currentLevel % 3 == 0) {
+        bulletAdd = 50;
+    } else {
+        bulletAdd = 200;
+    }
+    if (this.score == 3) {
+    this.backgroundSprite.loadTexture('background1'); }
     levelText.text = "Level: " + currentLevel;
     //resets the life count
     lives.callAll('revive');
