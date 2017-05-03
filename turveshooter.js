@@ -29,6 +29,7 @@ var enemyBullet;
 var firingTimer = 0;
 var stateText;
 var livingEnemies = [];
+var enemySpeed = 120;
 
 function create() {
 
@@ -93,7 +94,7 @@ function create() {
 
     //  An explosion pool
     explosions = game.add.group();
-    explosions.createMultiple(30, 'kaboom');
+    explosions.createMultiple(30, 'kaboom'); //check
     explosions.forEach(setupInvader, this);
 
     //  And some controls to play the game with
@@ -206,11 +207,12 @@ function collisionHandler (bullet, alien) {
 
     if (aliens.countLiving() == 0)
     {
+        enemySpeed = Math.min(enemySpeed + 200, 800);
         score += 1000;
         scoreText.text = scoreString + score;
 
         enemyBullets.callAll('kill',this);
-        stateText.text = " You Won, \n Click to restart!";
+        stateText.text = " You Won, \n Click to restart";
         stateText.visible = true;
 
         //the "click to restart" handler
@@ -233,7 +235,7 @@ function enemyHitsPlayer (player,bullet) {
     //  And create an explosion :)
     var explosion = explosions.getFirstExists(false);
     explosion.reset(player.body.x, player.body.y);
-    explosion.play('kaboom', 30, false, true);
+    explosion.play('kaboom', 30, false, true); //KABOOM
 
     // When the player dies
     if (lives.countLiving() < 1)
@@ -274,7 +276,7 @@ function enemyFires () {
         // And fire the bullet from this enemy
         enemyBullet.reset(shooter.body.x, shooter.body.y);
 
-        game.physics.arcade.moveToObject(enemyBullet,player,120);
+        game.physics.arcade.moveToObject(enemyBullet,player,enemySpeed);
         firingTimer = game.time.now + 2000;
     }
 
