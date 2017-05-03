@@ -219,7 +219,7 @@ function collisionHandler (bullet, alien) {
         if (currentLevel % 2 == 0 ) {
             bulletAdd = 50;
         };
-        if (currentLevel % 3 == 0) {
+        if (currentLevel % 2 != 0) {
             bulletAdd == 200;
         }
         score += 1000;
