@@ -41,8 +41,11 @@ function create() {
 
    
     game.physics.startSystem(Phaser.Physics.ARCADE);
-    game.sound.play('soundi');
-    game.sound.loop = true;
+    
+    backgroundMusic = game.add.audio('soundi');
+    backgroundMusic.loop = true;
+    backgroundMusic.play();
+    
 
     //  The scrolling starfield background
     starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
@@ -332,11 +335,11 @@ function restart () {
     currentLevel += 1
     if (currentLevel % 3 == 0) {
         bulletAdd = 50;
+        //starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
     } else {
         bulletAdd = 200;
+      //  starfield = game.add.tileSprite(0, 0, 800, 600, 'field');
     }
-    if (this.score == 3) {
-    this.backgroundSprite.loadTexture('background1'); }
     levelText.text = "Level: " + currentLevel;
     //resets the life count
     lives.callAll('revive');
