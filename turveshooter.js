@@ -71,14 +71,14 @@ function create() {
     
     //  The score 
     scoreString = 'Score : ';
-    scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
+    scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Futura', fill: '#fff' });
 
     //  Lives
      lives = game.add.group();
 //    game.add.text(game.world.width - 100, 10, 'Lives : ', { font: '34px Arial', fill: '#fff' });
 
     //  Text
-    stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
+    stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '42px Futura', fill: '#fff' });
     stateText.anchor.setTo(0.5, 0.5);
     stateText.visible = false;
 
@@ -153,11 +153,11 @@ function update() {
         //  Reset the player, then check for movement keys
         player.body.velocity.setTo(0, 0);
 
-        if (cursors.left.isDown)
+        if (cursors.left.isDown && player.x > 30)
         {
             player.body.velocity.x = -200;
         }
-        else if (cursors.right.isDown)
+        else if (cursors.right.isDown && player.x < 770)
         {
             player.body.velocity.x = 200;
         }
