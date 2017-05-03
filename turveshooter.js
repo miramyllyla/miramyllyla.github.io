@@ -210,7 +210,7 @@ function collisionHandler (bullet, alien) {
         scoreText.text = scoreString + score;
 
         enemyBullets.callAll('kill',this);
-        stateText.text = " You Won, \n Click to restart";
+        stateText.text = " You Won, \n Click to restart!";
         stateText.visible = true;
 
         //the "click to restart" handler
