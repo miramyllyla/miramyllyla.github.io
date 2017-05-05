@@ -171,9 +171,17 @@ function update() {
         {
             player.body.velocity.x = -200;
         }
-        else if (cursors.right.isDown && player.x < 770)
+        if (cursors.right.isDown && player.x < 770)
         {
             player.body.velocity.x = 200;
+        }
+         if (cursors.up.isDown && player.y > 30)
+        {
+            player.body.velocity.y = -200;
+        }
+         if (cursors.down.isDown && player.y < 570 )
+        {
+            player.body.velocity.y = 200;
         }
 
         //  Firing?

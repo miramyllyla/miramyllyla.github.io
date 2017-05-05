@@ -8,8 +8,10 @@ function preload() {
     game.load.image('ship', 'farmer.png');
     game.load.image('live', 'heart.png');
     game.load.image('kaboom', 'fireball1.png');
+    game.load.image('splash', 'splash.png');
     game.load.image('starfield', 'field.png');
-    game.load.image('background', 'dimangi.png');
+    game.load.image('bonus', 'starfield.png');
+    game.load.audio('soundi', 'soundi.mp3');
 
 }
 
@@ -17,26 +19,46 @@ var player;
 var aliens;
 var bullets;
 var bulletTime = 0;
+var bulletAdd = 200;
 var cursors;
+var bonusRound = false
 var fireButton;
+var reloadButton;
 var explosions;
 var starfield;
+var ship;
+var isReloading;
+var ammo = 20;
 var score = 0;
 var scoreString = '';
 var scoreText;
+var ammoString = 'Ammo: ' + ammo
+var ammoText;
+var currentLevel = 1;
+var levelString = 'Level: ' + currentLevel;
+var levelText;
 var lives;
+var alienSpeed = 200; 
 var enemyBullet;
 var firingTimer = 0;
 var stateText;
 var livingEnemies = [];
-
+var enemySpeed = 120
+var gitTest;
 function create() {
 
+   
     game.physics.startSystem(Phaser.Physics.ARCADE);
+    
+    backgroundMusic = game.add.audio('soundi');
+    backgroundMusic.loop = true;
+    backgroundMusic.play();
+    
 
     //  The scrolling starfield background
     starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
-
+    
+ 
     //  Our bullet group
     bullets = game.add.group();
     bullets.enableBody = true;
@@ -70,15 +92,17 @@ function create() {
     createAliens();
     
     //  The score 
-    scoreString = 'Score : ';
-    scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
+    scoreString = 'Score: ';
+    scoreText = game.add.text(20, 20, scoreString + score, { font: '20px Futura', fill: '#fff' });
+    levelText = game.add.text(20, 50,levelString, {font: '20px Futura',fill:'#fff'});
+    ammoText = game.add.text(20,550,ammoString, {font: '20px Futura',fill:'#fff'});
 
     //  Lives
      lives = game.add.group();
-//    game.add.text(game.world.width - 100, 10, 'Lives : ', { font: '34px Arial', fill: '#fff' });
+//    game.add.text(game.world.width - 100, 10, 'Lives : ', { font: '20px Futura', fill: '#fff' });
 
     //  Text
-    stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '84px Arial', fill: '#fff' });
+    stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '42px Futura', fill: '#fff' });
     stateText.anchor.setTo(0.5, 0.5);
     stateText.visible = false;
 
@@ -94,11 +118,13 @@ function create() {
     //  An explosion pool
     explosions = game.add.group();
     explosions.createMultiple(30, 'kaboom');
+    explosions.createMultiple(30, 'splash');
     explosions.forEach(setupInvader, this);
 
     //  And some controls to play the game with
     cursors = game.input.keyboard.createCursorKeys();
     fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    reloadButton = game.input.keyboard.addKey(Phaser.Keyboard.SHIFT);
     
 }
 
@@ -110,7 +136,11 @@ function createAliens () {
         {
             var alien = aliens.create(x * 48, y * 50, 'invader');
             alien.anchor.setTo(0.5, 0.5);
-            alien.animations.add('fly', [ 0, 1, 2, 3 ], 20, true);
+            var speed = 5;
+            if(bonusRound) {
+                speed = 40;
+            }
+            alien.animations.add('fly', [ 0, 1, 2, 3 ], speed, true);
             alien.play('fly');
             alien.body.moves = false;
         }
@@ -120,9 +150,8 @@ function createAliens () {
     aliens.y = 50;
 
     //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
-    var tween = game.add.tween(aliens).to( { x: 200 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
-
-    //  When the tween loops it calls descend
+    var tween = game.add.tween(aliens).to( { x: 300 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+ //  When the tween loops it calls descend
     tween.onLoop.add(descend, this);
 }
 
@@ -133,6 +162,7 @@ function setupInvader (invader) {
 
     invader.anchor.x = 0.5;
     invader.anchor.y = 0.5;
+    invader.animations.add('splash');
     invader.animations.add('kaboom');
 
 }
@@ -147,26 +177,39 @@ function update() {
 
     //  Scroll the background
     starfield.tilePosition.y += 2;
-
+    //ship.tilePosition.x += 2;
     if (player.alive)
     {
         //  Reset the player, then check for movement keys
         player.body.velocity.setTo(0, 0);
 
-        if (cursors.left.isDown)
+        if (cursors.left.isDown && player.x > 30)
         {
             player.body.velocity.x = -200;
         }
-        else if (cursors.right.isDown)
+        if (cursors.right.isDown && player.x < 770)
         {
             player.body.velocity.x = 200;
         }
+         if (cursors.up.isDown && player.y > 30)
+        {
+            player.body.velocity.y = -200;
+        }
+         if (cursors.down.isDown && player.y < 570 )
+        {
+            player.body.velocity.y = 200;
+        }
 
         //  Firing?
-        if (fireButton.isDown)
+        if (fireButton.isDown&& ammo > 0 && !isReloading)
         {
+            
             fireBullet();
+            
+        } else if (reloadButton.isDown) {
+            reload();
         }
+        
 
         if (game.time.now > firingTimer)
         {
@@ -176,8 +219,22 @@ function update() {
         //  Run collision
         game.physics.arcade.overlap(bullets, aliens, collisionHandler, null, this);
         game.physics.arcade.overlap(enemyBullets, player, enemyHitsPlayer, null, this);
+        if(!bonusRound) { game.physics.arcade.overlap(enemyBullets, bullets, bulletHitsEnemy, null, this); }
     }
 
+}
+
+function reload() {
+    isReloading = true;
+    
+   ammoText.text = 'Reloading...';
+    
+       setTimeout(function(){
+        ammo = 20;
+        ammoText.text = 'Ammo: ' + ammo;
+        isReloading= false;
+    },2000)
+    
 }
 
 function render() {
@@ -187,6 +244,9 @@ function render() {
     //     game.debug.body(aliens.children[i]);
     // }
 
+}
+function bulletHitsEnemy(bullet,alien) {
+    bullet.kill()
 }
 
 function collisionHandler (bullet, alien) {
@@ -202,15 +262,22 @@ function collisionHandler (bullet, alien) {
     //  And create an explosion :)
     var explosion = explosions.getFirstExists(false);
     explosion.reset(alien.body.x, alien.body.y);
-    explosion.play('kaboom', 30, false, true);
+    explosion.play('splash', 30, false, true);
 
     if (aliens.countLiving() == 0)
     {
+        enemySpeed = Math.min(enemySpeed + 200, 800)
+        if (bonusRound) {
+            bulletAdd = 50;
+        } else
+        {
+            bulletAdd == 200;
+        }
         score += 1000;
         scoreText.text = scoreString + score;
-
+        
         enemyBullets.callAll('kill',this);
-        stateText.text = " You Won, \n Click to restart";
+        stateText.text = " You Won, \n Click for next level!";
         stateText.visible = true;
 
         //the "click to restart" handler
@@ -240,8 +307,11 @@ function enemyHitsPlayer (player,bullet) {
     {
         player.kill();
         enemyBullets.callAll('kill');
-
-        stateText.text=" GAME OVER \n Click to restart";
+        enemySpeed = 120;
+        score = 0;
+        bulletAdd = 200;
+        currentLevel = 0;
+        stateText.text="  \n Click to restart";
         stateText.visible = true;
 
         //the "click to restart" handler
@@ -274,8 +344,8 @@ function enemyFires () {
         // And fire the bullet from this enemy
         enemyBullet.reset(shooter.body.x, shooter.body.y);
 
-        game.physics.arcade.moveToObject(enemyBullet,player,120);
-        firingTimer = game.time.now + 2000;
+        game.physics.arcade.moveToObject(enemyBullet,player,enemySpeed);
+        firingTimer = game.time.now + 500;
     }
 
 }
@@ -291,15 +361,20 @@ function fireBullet () {
         if (bullet)
         {
             //  And fire it
+            ammo = ammo - 1
+            if(!ammo == 0) {
+                ammoText.text = 'Ammo: ' + ammo 
+            } else {
+                ammoText.text = 'Press shift to reload!'
+            }
             bullet.reset(player.x, player.y + 8);
             bullet.body.velocity.y = -400;
-            bulletTime = game.time.now + 200;
+            bulletTime = game.time.now + bulletAdd;
         }
     }
 
 }
-
-function resetBullet (bullet) {
+ function resetBullet (bullet) {
 
     //  Called if the bullet goes out of the screen
     bullet.kill();
@@ -309,15 +384,27 @@ function resetBullet (bullet) {
 function restart () {
 
     //  A new level starts
-    
+    currentLevel += 1
+    if (currentLevel % 3 == 0) {
+        bonusRound = true;
+        bulletAdd = 50;
+        //starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
+    } else {
+        bulletAdd = 200;
+        bonusRound = false;
+      //  starfield = game.add.tileSprite(0, 0, 800, 600, 'field');
+    }
+    levelText.text = "Level: " + currentLevel;
     //resets the life count
     lives.callAll('revive');
     //  And brings the aliens back from the dead :)
     aliens.removeAll();
     createAliens();
+    
 
     //revives the player
     player.revive();
     //hides the text
     stateText.visible = false;
 }
+
