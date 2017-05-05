@@ -12,11 +12,12 @@ function preload() {
     game.load.image('starfield', 'field.png');
     game.load.image('bonus', 'starfield.png');
     game.load.audio('soundi', 'soundi.mp3');
+  //  game.load.bitmapFont('fontti', 'fontti.png', 'fontti.xml');
 
 }
 
 var player;
-var aliens;
+var turpeet; //prev. aliens
 var bullets;
 var bulletTime = 0;
 var bulletAdd = 200;
@@ -38,7 +39,6 @@ var currentLevel = 1;
 var levelString = 'Level: ' + currentLevel;
 var levelText;
 var lives;
-var alienSpeed = 200; 
 var enemyBullet;
 var firingTimer = 0;
 var stateText;
@@ -85,24 +85,24 @@ function create() {
     game.physics.enable(player, Phaser.Physics.ARCADE);
 
     //  The baddies!
-    aliens = game.add.group();
-    aliens.enableBody = true;
-    aliens.physicsBodyType = Phaser.Physics.ARCADE;
+    turpeet = game.add.group();
+    turpeet.enableBody = true;
+    turpeet.physicsBodyType = Phaser.Physics.ARCADE;
 
-    createAliens();
+    createTurpeet();
     
     //  The score 
     scoreString = 'Score: ';
-    scoreText = game.add.text(20, 20, scoreString + score, { font: '20px Futura', fill: '#fff' });
-    levelText = game.add.text(20, 50,levelString, {font: '20px Futura',fill:'#fff'});
-    ammoText = game.add.text(20,550,ammoString, {font: '20px Futura',fill:'#fff'});
+    scoreText = game.add.text(20, 20, scoreString + score,{ font: '20px Impact ', fill: '#ffff99' });
+    levelText = game.add.text(20, 50,levelString, {font: '20px Impact',fill:'#ffff99'});
+    ammoText = game.add.text(20,550,ammoString, {font: '20px Impact',fill:'#ffff99'});
 
     //  Lives
      lives = game.add.group();
 //    game.add.text(game.world.width - 100, 10, 'Lives : ', { font: '20px Futura', fill: '#fff' });
 
     //  Text
-    stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '42px Futura', fill: '#fff' });
+    stateText = game.add.text(game.world.centerX,game.world.centerY,' ', { font: '42px Impact', fill: '#ffff99' });
     stateText.anchor.setTo(0.5, 0.5);
     stateText.visible = false;
 
@@ -128,29 +128,29 @@ function create() {
     
 }
 
-function createAliens () {
+function createTurpeet () {
 
     for (var y = 0; y < 4; y++)
     {
         for (var x = 0; x < 10; x++)
         {
-            var alien = aliens.create(x * 48, y * 50, 'invader');
-            alien.anchor.setTo(0.5, 0.5);
+            var turve = turpeet.create(x * 48, y * 50, 'invader');
+            turve.anchor.setTo(0.5, 0.5);
             var speed = 5;
             if(bonusRound) {
                 speed = 40;
             }
-            alien.animations.add('fly', [ 0, 1, 2, 3 ], speed, true);
-            alien.play('fly');
-            alien.body.moves = false;
+            turve.animations.add('fly', [ 0, 1, 2, 3 ], speed, true);
+            turve.play('fly');
+            turve.body.moves = false;
         }
     }
 
-    aliens.x = 100;
-    aliens.y = 50;
+    turpeet.x = 100;
+    turpeet.y = 50;
 
     //  All this does is basically start the invaders moving. Notice we're moving the Group they belong to, rather than the invaders directly.
-    var tween = game.add.tween(aliens).to( { x: 300 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+    var tween = game.add.tween(turpeet).to( { x: 300 }, 2000, Phaser.Easing.Linear.None, true, 0, 1000, true);
  //  When the tween loops it calls descend
     tween.onLoop.add(descend, this);
 }
@@ -169,7 +169,7 @@ function setupInvader (invader) {
 
 function descend() {
 
-    aliens.y += 10;
+    turpeet.y += 10;
 
 }
 
@@ -217,7 +217,7 @@ function update() {
         }
 
         //  Run collision
-        game.physics.arcade.overlap(bullets, aliens, collisionHandler, null, this);
+        game.physics.arcade.overlap(bullets, turpeet, collisionHandler, null, this);
         game.physics.arcade.overlap(enemyBullets, player, enemyHitsPlayer, null, this);
         if(!bonusRound) { game.physics.arcade.overlap(enemyBullets, bullets, bulletHitsEnemy, null, this); }
     }
@@ -239,9 +239,9 @@ function reload() {
 
 function render() {
 
-    // for (var i = 0; i < aliens.length; i++)
+    // for (var i = 0; i < turpeet.length; i++)
     // {
-    //     game.debug.body(aliens.children[i]);
+    //     game.debug.body(turpeet.children[i]);
     // }
 
 }
@@ -264,7 +264,7 @@ function collisionHandler (bullet, alien) {
     explosion.reset(alien.body.x, alien.body.y);
     explosion.play('splash', 30, false, true);
 
-    if (aliens.countLiving() == 0)
+    if (turpeet.countLiving() == 0)
     {
         enemySpeed = Math.min(enemySpeed + 200, 800)
         if (bonusRound) {
@@ -327,10 +327,10 @@ function enemyFires () {
 
     livingEnemies.length=0;
 
-    aliens.forEachAlive(function(alien){
+    turpeet.forEachAlive(function(turve){
 
         // put every living enemy in an array
-        livingEnemies.push(alien);
+        livingEnemies.push(turve);
     });
 
 
@@ -397,9 +397,9 @@ function restart () {
     levelText.text = "Level: " + currentLevel;
     //resets the life count
     lives.callAll('revive');
-    //  And brings the aliens back from the dead :)
-    aliens.removeAll();
-    createAliens();
+    //  And brings the turpeet back from the dead :)
+    turpeet.removeAll();
+    createTurpeet();
     
 
     //revives the player
