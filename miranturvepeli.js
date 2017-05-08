@@ -16,7 +16,7 @@
      game.load.audio('soundi', 'soundi.mp3');
      game.load.audio('shot', 'gunshot.mp3');
      game.load.audio('reload','reload.mp3')
-       game.load.audio('bonus','bonusrundi.mp3')
+     game.load.audio('bonus','bonusrundi.mp3')
  
  }
  
