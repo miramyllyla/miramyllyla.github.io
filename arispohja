@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface%7CCormorant+Garamond%7CLibre+Baskerville%7CLora%7CPlayfair+Display" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Faster+One%7CRubik+Mono+One" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="author" content="Mira Myllylä" />
+    <meta name="description" content="Tunne turpeen taika" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script
+    src="https://code.jquery.com/jquery-3.1.1.min.js"
+    integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+
+
+    
+    <link rel="stylesheet" media="screen"/>
+    <link rel="shortcut icon"
+          href="logo.png"/>
+
+    
+
+<span style="font-size:50px;cursor:pointer" onclick="openNav()"><i class="fa fa-bars" aria-hidden="true"></i></span>
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+    
+<link rel="stylesheet" type="text/css" href="main.css"/>
+    
+
+
+
+</body>
+</html>
