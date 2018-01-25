@@ -345,7 +345,7 @@ footer {
 .CVkuva {
    border: none;
    width: 800px;
-    float: inherit;
+    float: initial;
     margin-right: 20px;
     margin-bottom: 20px;
 }
