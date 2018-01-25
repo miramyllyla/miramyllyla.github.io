@@ -336,12 +336,19 @@ footer {
 
 .kamppiskuva {
    border: none;
-   width: 800px;
+   width: 450px;
+    float: left;
     margin-right: 20px;
     margin-bottom: 20px;
 }
 
-
+.CVkuva {
+   border: none;
+   width: 800px;
+    float: inherit;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
 
 .infokuva {
    border: none;
